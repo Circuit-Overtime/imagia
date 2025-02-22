@@ -81,7 +81,7 @@ window.addEventListener("load", function () {
     }
     else {
         document.querySelector(".cta-buttonnav").innerHTML = "";
-        document.querySelector(".cta-buttonnav").innerText = "Try Elixpo Art Now";
+        document.querySelector(".cta-buttonnav").innerText = "Try Imagia Art Now";
     }
     fetchComments();
 });
@@ -94,7 +94,7 @@ window.addEventListener("resize", function () {
     }
     else {
         document.querySelector(".cta-buttonnav").innerHTML = "";
-        document.querySelector(".cta-buttonnav").innerText = "Try Elixpo Art Now";
+        document.querySelector(".cta-buttonnav").innerText = "Try Imagia Art Now";
     }
 });
 
