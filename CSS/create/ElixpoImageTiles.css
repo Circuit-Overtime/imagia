@@ -1,0 +1,496 @@
+/*  Updated Styles for Centered Row Layout with Height Constraints */
+
+.imageTiles {
+    position: relative; 
+    top: 5%;  
+    left: 0;  
+    width: 75%; 
+    max-height: 65%; 
+    overflow-y: auto; 
+    overflow-x: hidden; 
+    background: transparent;
+    box-sizing: border-box;
+    transform: scale(1);  
+    display: flex;
+    flex-direction: column; 
+    justify-content: flex-start; 
+    align-items: center; 
+    gap: 20px; 
+    padding: 20px; 
+    margin: 0 auto; 
+}
+.imageTiles::-webkit-scrollbar
+{
+    display: none;
+}
+
+/* Common styles for all maskImageTiles */
+.imageTiles .maskImageTile1,
+.imageTiles .maskImageTile2,
+.imageTiles .maskImageTile3,
+.imageTiles .maskImageTile4 {
+    position: relative; /* Changed from absolute to relative */
+    height: auto; /* Changed from fixed height to auto */
+    width: 100%; /* Take full width */
+    background: transparent;
+    transition: 0.5s;
+    flex: none; /* Removed flex: 1, since we're using flex-direction: column */
+    display: flex; /*  Enable flexbox for horizontal layout within each tile */
+    align-items: center; /* Vertically align items */
+    justify-content: space-between; /*  Distribute items horizontally */
+    padding: 10px; /*  Add padding inside each row */
+    box-sizing: border-box; /*  Include padding and border in width and height */
+}
+
+/* Adjust the positions */
+.imageTiles .maskImageTile1 { top: auto; left: auto; transition-delay: 0.7s; }
+.imageTiles .maskImageTile2 { top: auto; left: auto; transition-delay: 0.8s; }
+.imageTiles .maskImageTile3 { top: auto; left: auto; transition-delay: 0.9s; }
+.imageTiles .maskImageTile4 { top: auto; left: auto; transition-delay: 1s; }
+
+
+
+/* Common styles for all spans inside maskImageTiles */
+.imageTiles .maskImageTile1 span,
+.imageTiles .maskImageTile2 span,
+.imageTiles .maskImageTile3 span,
+.imageTiles .maskImageTile4 span {
+    position: relative; /* Changed from absolute to relative */
+    height: auto; /*  Auto height */
+    width: auto; /* Auto width */
+    left: auto; /* Auto left */
+    background: transparent;
+    z-index: 8;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-right: 20px; /* Add some spacing */
+}
+
+/* Overriding top based on tile */
+.imageTiles .maskImageTile1 span { top: auto; }
+.imageTiles .maskImageTile2 span { top: auto; }
+.imageTiles .maskImageTile3 span { top: auto; }
+.imageTiles .maskImageTile4 span { top: auto; }
+
+/* Common styles for icon and text inside span */
+.imageTiles .maskImageTile1 span ion-icon,
+.imageTiles .maskImageTile2 span ion-icon,
+.imageTiles .maskImageTile3 span ion-icon,
+.imageTiles .maskImageTile4 span ion-icon {
+    color: #fff;
+    font-size: 1.2em; /*  Slightly larger icon */
+    margin-right: 10px;
+}
+
+.imageTiles .maskImageTile1 span p,
+.imageTiles .maskImageTile2 span p,
+.imageTiles .maskImageTile3 span p,
+.imageTiles .maskImageTile4 span p {
+    color: #fff;
+    font-size: 1.1em; /* Slightly larger text */
+    font-family: 'Source Code Pro', monospace;
+}
+
+/* Common styles for all creationStats */
+.imageTiles .maskImageTile1 .creationStats,
+.imageTiles .maskImageTile2 .creationStats,
+.imageTiles .maskImageTile3 .creationStats,
+.imageTiles .maskImageTile4 .creationStats {
+    position: relative; /* Changed from absolute to relative */
+    width: auto; /* Auto width */
+    background: transparent;
+    display: block;
+    flex: 1; /* Allow the stats to take remaining space */
+    box-sizing: border-box; /*  Include padding and border in width and height */
+    padding-left: 20px; /*  Add some left padding */
+}
+/* Overriding top based on tile */
+.imageTiles .maskImageTile1 .creationStats {  top: auto;  left: auto; height: auto; }
+.imageTiles .maskImageTile2 .creationStats {  top: auto;  left: auto; height: auto; }
+.imageTiles .maskImageTile3 .creationStats {  top: auto;  left: auto; height: auto; }
+.imageTiles .maskImageTile4 .creationStats {  top: auto;  left: auto; height: auto; }
+
+/* Common styles for all p elements inside creationStats */
+.imageTiles .maskImageTile1 .creationStats p,
+.imageTiles .maskImageTile2 .creationStats p,
+.imageTiles .maskImageTile3 .creationStats p,
+.imageTiles .maskImageTile4 .creationStats p {
+    color: #fff;
+    margin-bottom: 5px; /* Add space between paragraphs */
+}
+
+/* Common styles for creationHashtags */
+.imageTiles .maskImageTile1 .creationStats .creationHashtags,
+.imageTiles .maskImageTile2 .creationStats .creationHashtags,
+.imageTiles .maskImageTile3 .creationStats .creationHashtags,
+.imageTiles .maskImageTile4 .creationStats .creationHashtags {
+    position: relative;
+    left: auto;
+    text-align: left; /*  Align hashtags to the left */
+    color: #868686;
+    margin-bottom: 5px; /* Add space below hashtags */
+    font-family: 'orbitron', sans-serif;
+}
+
+/* Common styles for generatedSeedIcon */
+.imageTiles .maskImageTile1 .creationStats .generatedSeedIcon,
+.imageTiles .maskImageTile2 .creationStats .generatedSeedIcon,
+.imageTiles .maskImageTile3 .creationStats .generatedSeedIcon,
+.imageTiles .maskImageTile4 .creationStats .generatedSeedIcon {
+    position: relative;
+    top: auto;
+    left: auto;
+    font-size: 1.2em; /*  Slightly smaller */
+    color: #fff;
+    margin-right: 5px; /*  Add space to the right */
+}
+
+/* Common styles for generatedSeed */
+.imageTiles .maskImageTile1 .creationStats .seedShowcase 
+{
+    width: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.imageTiles .maskImageTile1 .creationStats .generatedSeed,
+.imageTiles .maskImageTile2 .creationStats .generatedSeed,
+.imageTiles .maskImageTile3 .creationStats .generatedSeed,
+.imageTiles .maskImageTile4 .creationStats .generatedSeed {
+    position: relative;
+    left: auto;
+    top: -5px;
+    text-align: left; /*  Align to the left */
+    color: #fff;
+    font-family: "Orbitron", sans-serif;
+    letter-spacing: 1px; /*  Slightly smaller */
+}
+
+/* Common styles for generationTimeMask */
+.imageTiles .maskImageTile1 .creationStats .generationTimeMask,
+.imageTiles .maskImageTile2 .creationStats .generationTimeMask,
+.imageTiles .maskImageTile3 .creationStats .generationTimeMask,
+.imageTiles .maskImageTile4 .creationStats .generationTimeMask {
+    position: relative;
+    height: 50px; /* Auto height */
+    width: 35%; /* Auto width */
+    top: auto;
+    left: auto;
+    display: flex;
+    align-items: center;
+    background: #161616;
+    border-radius: 12px;
+    border: 1px solid #b941ff;
+    margin-bottom: 10px; /* Add space below */
+    padding: 5px 10px; /* Add some padding */
+}
+
+/* Common styles for generationTimeMask::before */
+.imageTiles .maskImageTile1 .creationStats .generationTimeMask::before,
+.imageTiles .maskImageTile2 .creationStats .generationTimeMask::before,
+.imageTiles .maskImageTile3 .creationStats .generationTimeMask::before,
+.imageTiles .maskImageTile4 .creationStats .generationTimeMask::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    right: 0;
+    top: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 0 12px 12px 0;
+}
+
+/* Common styles for generationTheme */
+.imageTiles .maskImageTile1 .creationStats .generationTheme,
+.imageTiles .maskImageTile2 .creationStats .generationTheme,
+.imageTiles .maskImageTile3 .creationStats .generationTheme,
+.imageTiles .maskImageTile4 .creationStats .generationTheme {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: translateX(0); /* Reset */
+    color: #fff;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 1em;
+    text-align: left; /* Align to the left */
+}
+
+/* Common styles for generationTime and generationAspectRatio */
+.imageTiles .maskImageTile1 .creationStats .generationTime,
+.imageTiles .maskImageTile1 .creationStats .generationAspectRatio,
+.imageTiles .maskImageTile2 .creationStats .generationTime,
+.imageTiles .maskImageTile2 .creationStats .generationAspectRatio,
+.imageTiles .maskImageTile3 .creationStats .generationTime,
+.imageTiles .maskImageTile3 .creationStats .generationAspectRatio,
+.imageTiles .maskImageTile4 .creationStats .generationTime,
+.imageTiles .maskImageTile4 .creationStats .generationAspectRatio {
+    display: flex;
+    gap: 5px; /* Reduced gap */
+    margin: 0; /* Reset */
+    align-items: center; /* Center them */
+}
+.imageTiles .maskImageTile1 .creationStats .generationTime,
+.imageTiles .maskImageTile2 .creationStats .generationTime,
+.imageTiles .maskImageTile3 .creationStats .generationTime,
+.imageTiles .maskImageTile4 .creationStats .generationTime
+{
+    margin-left: 20px;
+}
+.imageTiles .maskImageTile1 .creationStats .generationAspectRatio,
+.imageTiles .maskImageTile2 .creationStats .generationAspectRatio,
+.imageTiles .maskImageTile3 .creationStats .generationAspectRatio,
+.imageTiles .maskImageTile4 .creationStats .generationAspectRatio
+{
+    position: absolute;
+    left: 40%;
+}
+/* Common styles for generationTime */
+.imageTiles .maskImageTile1 .creationStats .generationTime,
+.imageTiles .maskImageTile2 .creationStats .generationTime,
+.imageTiles .maskImageTile3 .creationStats .generationTime,
+.imageTiles .maskImageTile4 .creationStats .generationTime {
+    position: relative;
+    font-family: "Orbitron", sans-serif;
+    left: auto; /* Reset */
+}
+
+/* Common styles for generationAspectRatio */
+.imageTiles .maskImageTile1 .creationStats .generationAspectRatio,
+.imageTiles .maskImageTile2 .creationStats .generationAspectRatio,
+.imageTiles .maskImageTile3 .creationStats .generationAspectRatio,
+.imageTiles .maskImageTile4 .creationStats .generationAspectRatio {
+    position: relative;
+    font-family: "Orbitron", sans-serif;
+    letter-spacing: 1px; /* Reduced spacing */
+}
+
+
+/* Override the default position for each generation time  */
+.imageTiles .maskImageTile1 .creationStats .generationTime {  left: auto; }
+.imageTiles .maskImageTile2 .creationStats .generationTime {  left: auto; }
+.imageTiles .maskImageTile3 .creationStats .generationTime {  left: auto; }
+.imageTiles .maskImageTile4 .creationStats .generationTime {  left: auto; }
+
+/* Overriding font-size based on tile */
+.imageTiles .maskImageTile1 .creationStats .generationTime,
+.imageTiles .maskImageTile1 .creationStats .generationAspectRatio,
+.imageTiles .maskImageTile3 .creationStats .generationTime,
+.imageTiles .maskImageTile3 .creationStats .generationAspectRatio {  font-size: 0.9em; }
+
+.imageTiles .maskImageTile2 .creationStats .generationTime,
+.imageTiles .maskImageTile2 .creationStats .generationAspectRatio,
+.imageTiles .maskImageTile4 .creationStats .generationTime,
+.imageTiles .maskImageTile4 .creationStats .generationAspectRatio {  font-size: 1em; }
+
+/* Common styles for all imageTiles */
+.imageTiles .maskImageTile1 .imageTile1,
+.imageTiles .maskImageTile2 .imageTile2,
+.imageTiles .maskImageTile3 .imageTile3,
+.imageTiles .maskImageTile4 .imageTile4 {
+    position: relative; /*  Relative positioning */
+    height: 300px; /* Increased height */
+    width: 500px; /* Increased width */
+    background: linear-gradient(145deg, #0e0e0e, #101010);
+    border-radius: 15px;
+    box-shadow: inset 5px 5px 10px #0c0c0c, inset -5px -5px 10px #121212;
+    overflow: hidden;
+    cursor: pointer;
+    transition: 0.5s;
+    transition-delay: 0.7s;
+    flex-shrink: 0; /* Don't shrink */
+    border: 2px solid #e9be00;
+}
+/* Override the default position for each image tile  */
+.imageTiles .maskImageTile1 .imageTile1 { top: auto;  left: auto; }
+.imageTiles .maskImageTile2 .imageTile2 { top: auto;  left: auto; }
+.imageTiles .maskImageTile3 .imageTile3 { top: auto;  left: auto; }
+.imageTiles .maskImageTile4 .imageTile4 { top: auto;  left: auto; }
+
+
+/* Common styles for all expansionIcons */
+.imageTiles .maskImageTile1 .imageTile1 .expansionIcon1,
+.imageTiles .maskImageTile2 .imageTile2 .expansionIcon2,
+.imageTiles .maskImageTile3 .imageTile3 .expansionIcon3,
+.imageTiles .maskImageTile4 .imageTile4 .expansionIcon4 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 10em; /* Increased size */
+    font-weight: 100;
+    opacity: .25;
+    color: #fff;
+    transform: translateX(-50%) translateY(-50%) rotate(0deg);
+    animation: flashExpansion 1s linear forwards;
+    transition: 0.5s;
+    pointer-events: none;
+    display: block;
+}
+
+/* Common styles for all shrinked expansionIcons */
+.imageTiles .maskImageTile1 .imageTile1 .expansionIcon1.shrink,
+.imageTiles .maskImageTile2 .imageTile2 .expansionIcon2.shrink,
+.imageTiles .maskImageTile3 .imageTile3 .expansionIcon3.shrink,
+.imageTiles .maskImageTile4 .imageTile4 .expansionIcon4.shrink {
+    animation: none;
+    opacity: 1;
+    top: 10%;
+    left: 85%;
+    font-size: 2em;
+    transition: 0.5s;
+    cursor: pointer;
+    z-index: 20;
+    display: block;
+}
+
+/* Common styles for all hidden expansionIcons */
+.imageTiles .maskImageTile1 .imageTile1 .expansionIcon1.hidden,
+.imageTiles .maskImageTile2 .imageTile2 .expansionIcon2.hidden,
+.imageTiles .maskImageTile3 .imageTile3 .expansionIcon3.hidden,
+.imageTiles .maskImageTile4 .imageTile4 .expansionIcon4.hidden {
+    opacity: 0;
+    display: none;
+}
+
+@keyframes flashExpansion {
+    0%, 33.33%, 66.66% {
+        transform: translateX(-50%) translateY(-50%) rotate(0deg);
+        opacity: .25;
+    }
+
+    16.66%, 50%, 83.33% {
+        transform: translateX(-50%) translateY(-50%) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(-50%) translateY(-50%) rotate(0deg);
+        opacity: .25;
+    }
+}
+
+/* Common styles for all imageTileMasks */
+.imageTiles .maskImageTile1 .imageTile1 > .imageTile1Mask,
+.imageTiles .maskImageTile2 .imageTile2 > .imageTile2Mask,
+.imageTiles .maskImageTile3 .imageTile3 > .imageTile3Mask,
+.imageTiles .maskImageTile4 .imageTile4 > .imageTile4Mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #e9be00;
+    background-image: linear-gradient(160deg,
+            #0093E9 0%,
+            #80D0C7 20%,
+            #8EC5FC 40%,
+            #E0C3FC 60%,
+            #FBAB7E 80%,
+            #F7CE68 90%,
+            #FFCC70 100%);
+    filter: blur(19px);
+    opacity: 0.5;
+    transition: 0.25s;
+    animation: imageGen 2s linear infinite;
+}
+
+/* Common styles for generating imageTileMasks and particle effects */
+.imageTiles .maskImageTile1 .imageTile1.generating > .imageTile1Mask, .particleEffectImageTile1,
+.imageTiles .maskImageTile2 .imageTile2.generating > .imageTile2Mask, .particleEffectImageTile2,
+.imageTiles .maskImageTile3 .imageTile3.generating > .imageTile3Mask, .particleEffectImageTile3,
+.imageTiles .maskImageTile4 .imageTile4.generating > .imageTile4Mask, .particleEffectImageTile4 {
+    animation: loadingFlash 1.5s linear infinite;
+    pointer-events: none;
+}
+
+
+/* Removed redundant animation rules. Applied loadingFlash to elements as needed */
+#generationTimeMask1,
+#generatedSeedIcon1,
+#generationTimeMask2,
+#generatedSeedIcon2,
+#generationTimeMask3,
+#generatedSeedIcon3,
+#generationTimeMask4,
+#generatedSeedIcon4 {
+    color: #fff;
+    font-size: 2em;
+    font-family: 'orbitron', sans-serif;
+}
+
+
+/* Common pointer-events styles */
+.maskImageTile1,
+.maskImageTile2,
+.maskImageTile3,
+.maskImageTile4 {
+    pointer-events: none;
+}
+
+.maskImageTile1.expand,
+.maskImageTile2.expand,
+.maskImageTile3.expand,
+.maskImageTile4.expand {
+    pointer-events: all;
+}
+
+/* Common styles for generated imageTileMasks */
+.imageTiles .maskImageTile1 .imageTile1.generated > .imageTile1Mask,
+.imageTiles .maskImageTile2 .imageTile2.generated > .imageTile2Mask,
+.imageTiles .maskImageTile3 .imageTile3.generated > .imageTile3Mask,
+.imageTiles .maskImageTile4 .imageTile4.generated > .imageTile4Mask {
+    opacity: 0;
+    z-index: -1;
+    pointer-events: all;
+}
+
+/* Common styles for generated particleEffects */
+.imageTiles .maskImageTile1 .imageTile1.generated > .particleEffectImageTile1,
+.imageTiles .maskImageTile2 .imageTile2.generated > .particleEffectImageTile2,
+.imageTiles .maskImageTile3 .imageTile3.generated > .particleEffectImageTile3,
+.imageTiles .maskImageTile4 .imageTile4.generated > .particleEffectImageTile4 {
+    opacity: 0;
+    z-index: -1;
+}
+
+/* Common styles for all images inside imageTiles */
+.imageTiles .imageTile1 > img,
+.imageTiles .imageTile2 > img,
+.imageTiles .imageTile3 > img,
+.imageTiles .imageTile4 > img {
+    object-fit: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    filter: blur(5px);
+    transition: 0.5s;
+}
+
+/* Common styles for all particleEffects */
+.imageTiles .imageTile1 > .particleEffectImageTile1,
+.imageTiles .imageTile2 > .particleEffectImageTile2,
+.imageTiles .imageTile3 > .particleEffectImageTile3,
+.imageTiles .imageTile4 > .particleEffectImageTile4 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+/* Common styles for hidden imageTiles */
+.imageTiles.hidden .maskImageTile1,
+.imageTiles.hidden .maskImageTile2,
+.imageTiles.hidden .maskImageTile3,
+.imageTiles.hidden .maskImageTile4 {
+    position: relative; /* Ensure position is relative when hidden */
+    transform: translateY(0); /* Reset the transform */
+    transition-delay: 0s; /* Reset transition delay */
+    opacity: 0;
+    display: none; /* Hide the element completely */
+}
+
