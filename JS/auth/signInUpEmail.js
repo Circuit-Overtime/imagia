@@ -64,117 +64,128 @@ document.getElementById("signinBtnDB").addEventListener("click", () => { //when 
     }
 });
 function registerUser() {
-
     emailSignUp = document.getElementById("signupEmail").value;
     passwordSignUp = document.getElementById("signupPsswd").value;
     ConfpasswordSignUp = document.getElementById("signupPsswdConf").value;
     userSignUp = document.getElementById("signupName").value;
-    docRef = db.collection("users").doc(userSignUp.toLowerCase());
-    docRef.get().then((doc) => {
-        if(doc.exists)
-        {
-            notify("Username Already Exists!");
-        }
-    })
+
+    // Disable form interactions during registration
     document.getElementById("form_register").style.pointerEvents = "none";
-    var today  = new Date();
-    var date = today.getDate() + "/" + (today.getMonth()+1) + "/" + today.getFullYear() ; //gives the  current date to the system
-    firebase.auth().createUserWithEmailAndPassword(emailSignUp, passwordSignUp)
-    .then(function(userCredential) {
-        var user = userCredential.user //contains the user credentials
-                tileFlash();
-                db.collection('users').doc(userSignUp.toLowerCase()).set({
+
+    // Check if the username already exists in Firestore
+    const docRef = db.collection("users").doc(userSignUp.toLowerCase());
+    docRef.get().then((doc) => {
+        if (doc.exists) {
+            notify("Username Already Exists!");
+            document.getElementById("form_register").style.pointerEvents = "all"; // Re-enable form
+            return; // Exit the function if username exists
+        }
+
+        // Create user with Firebase Authentication
+        firebase.auth().createUserWithEmailAndPassword(emailSignUp, passwordSignUp)
+            .then((userCredential) => {
+                const user = userCredential.user; // Get the authenticated user
+
+                // Prepare user data for Firestore
+                const userData = {
                     username: userSignUp.toLowerCase(),
                     email: emailSignUp,
                     uid: user.uid,
                     displayName: userSignUp,
-                    dateCreated: date,
+                    dateCreated: new Date().toLocaleDateString(),
                     isDev: "NotDev",
                     provider: "Firebase",
-                    plan : "lix",
-                    coins : 1000000,
+                    plan: "lix",
+                    coins: 1000000,
                     user_logo: "https://firebasestorage.googleapis.com/v0/b/elixpoai.appspot.com/o/officialDisplayImages%2FCoverPageSlidingImages%2F18_18_11zon.png?alt=media&token=2ae8d56e-6a51-4c1b-bfb1-7f291abfd655",
-                    password : passwordSignUp
-                }).then(() => {
-                    
-                    localStorage.setItem("ElixpoAIUser", userSignUp.toLowerCase());
-                    notify("Account Created Successfully!");
-                    setTimeout(() => {
-                        resetRegisterForm();
-                        document.getElementById("form_register").classList.add("hidden");
-                        document.getElementById("form_login").classList.remove("hidden");
+                    password: passwordSignUp
+                };
 
-                        document.getElementById("form_register").style.pointerEvents = "all";
-                        notify("Please Re Login!");
-                        
-                    }, 2200);
-                    
-                })
-                .catch((err) => {
-                    
-                    console.error("Error adding document: ", err);
-                    RegisterError("Some Error Occured!");
-                    setTimeout(() => {
-                        
-                    }, 500);
-                });
-    
-    })
-    
-    .catch((err) => {
-        console.error("Error during signInWithPopup:", err.message);
-        tileFlash();
-        if(err.message == "The email address is already in use by another account.")
-        {
-            RegisterError("Email already registered");
-            
-        }
-        else 
-        {
-            RegisterError("Some Error Occured!");
-            
-        }
-        
+                // Save user data to Firestore
+                return db.collection("users").doc(userSignUp.toLowerCase()).set(userData);
+            })
+            .then(() => {
+                // Success: User created and data saved to Firestore
+                notify("Account Created Successfully!");
+                localStorage.setItem("ElixpoAIUser", userSignUp.toLowerCase());
+
+                // Reset the form and switch to the login form
+                setTimeout(() => {
+                    resetRegisterForm();
+                    document.getElementById("form_register").classList.add("hidden");
+                    document.getElementById("form_login").classList.remove("hidden");
+                    document.getElementById("form_register").style.pointerEvents = "all"; // Re-enable form
+                    notify("Please Re Login!");
+                }, 2200);
+            })
+            .catch((error) => {
+                // Handle errors
+                console.error("Error during registration:", error);
+                if (error.code === "auth/email-already-in-use") {
+                    RegisterError("Email already registered");
+                } else {
+                    RegisterError("Some Error Occurred!");
+                }
+                document.getElementById("form_register").style.pointerEvents = "all"; // Re-enable form
+            });
+    }).catch((error) => {
+        console.error("Error checking username:", error);
+        RegisterError("Some Error Occurred!");
+        document.getElementById("form_register").style.pointerEvents = "all"; // Re-enable form
     });
-    
 }
-
-
 
 function loginUser() {
     emailSignIn = document.getElementById("signInEmail").value.toLowerCase().trim();
     usernameSignIn = document.getElementById("signInName").value.toLowerCase().trim();
     passwordSignIn = document.getElementById("signInPassword").value.toLowerCase().trim();
-    tileFlash();
-    var docRef = db.collection("users").doc(usernameSignIn.toLowerCase());
-    docRef.get().then((doc) => {
-        if(doc.exists)
-        {
-            console.log(usernameSignIn, emailSignIn, passwordSignIn);   
-            if (doc.data().username == usernameSignIn && doc.data().email == emailSignIn && doc.data().password == passwordSignIn) {
-                    notify("Login Successful!");
-                    localStorage.setItem("ElixpoAIUser", usernameSignIn);
-                    setTimeout(() => {
-                        localStorage.setItem("guestLogin", "false");
 
-                        const urlParams = new URLSearchParams(window.location.search);
-                        if(urlParams.get('cmp'))
-                        {
-                            console.log(urlParams.get('cmp'));
-                            redirectTo(`blogs/elixpo_art/?cmp=${urlParams.get('cmp')}`);
-                            return;
-                        }
-                        redirectTo("src/create");
-                        
-                    }, 2000);
-                
- 
+    // Flash tiles for visual feedback
+    tileFlash();
+
+    // Reference to the user document in Firestore
+    const docRef = db.collection("users").doc(usernameSignIn.toLowerCase());
+
+    docRef.get().then((doc) => {
+        if (doc.exists) {
+            console.log("Firestore Data:", doc.data()); // Debugging: Log Firestore data
+            console.log("Input Data:", { usernameSignIn, emailSignIn, passwordSignIn }); // Debugging: Log input data
+
+            // Check if the credentials match
+            if (
+                doc.data().username === usernameSignIn &&
+                doc.data().email === emailSignIn &&
+                doc.data().password === passwordSignIn
+            ) {
+                notify("Login Successful!");
+
+                // Save username to localStorage
+                localStorage.setItem("ElixpoAIUser", usernameSignIn);
+                localStorage.setItem("guestLogin", "false");
+
+                // Redirect after a delay
+                setTimeout(() => {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    if (urlParams.get('cmp')) {
+                        console.log("Campaign Parameter:", urlParams.get('cmp')); // Debugging: Log campaign parameter
+                        redirectTo(`blogs/elixpo_art/?cmp=${urlParams.get('cmp')}`);
+                    } else {
+                        window.location.href=`/src/create/index.html`
+                    }
+                }, 2000);
             } else {
+                // Credentials do not match
                 LoginError("Invalid Credentials!");
-                
             }
+        } else {
+            // User document does not exist
+            LoginError("User Not Found!");
         }
-})
+    }).catch((error) => {
+        // Handle Firestore read errors
+        console.error("Error fetching user data:", error);
+        LoginError("An Error Occurred. Please Try Again.");
+    });
 }
 
 
