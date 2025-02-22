@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upscaler</title>
+</head>
+<body>
+    <h2>Upload an Image for Upscaling</h2>
+    <input type="file" id="imageInput" accept="image/*">
+    <button onclick="uploadImage()">Upscale</button>
+    <br><br>
+    <h3>Upscaled Image:</h3>
+    <img id="outputImage" style="max-width: 100%;" />
+
+    <script>
+        async function uploadImage() {
+            const input = document.getElementById('imageInput');
+            if (!input.files.length) {
+                alert('Please select an image first.');
+                return;
+            }
+
+            const file = input.files[0];
+            const formData = new FormData();
+            formData.append('image', file);
+
+            try {
+                const response = await fetch('http://127.0.0.1:5000/upscale', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Access-Control-Allow-Origin': '*'
+                    },
+                    mode: 'cors'
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to upscale image');
+                }
+
+                const blob = await response.blob();
+                const imageUrl = URL.createObjectURL(blob);
+                document.getElementById('outputImage').src = imageUrl;
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error upscaling image.');
+            }
+        }
+    </script>
+</body>
+</html>
