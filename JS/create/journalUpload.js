@@ -16,7 +16,7 @@ document.getElementById("journalMode").addEventListener("click", function() {
     localStorage.setItem("ElixpoBlogID", blogId);
   }
   // Open the blog section (assumes "jorunalSection" shows the blog)
-  document.getElementById("jorunalSection").classList.remove("hidden");
+  document.getElementById("journalSection").classList.remove("hidden");
 });
 
 // Function to upload/update blog content.
