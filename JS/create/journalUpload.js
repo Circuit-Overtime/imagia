@@ -93,6 +93,7 @@ async function uploadBlog() {
   const blogDocData = {
     createdAt: firebase.firestore.FieldValue.serverTimestamp(),
     username,
+    docId: blogId,         // Root-level docId field.
     title: rootTitle,      // Root-level title.
     content: blogData,     // Array of journal objects.
     uploadedImages: []     // Will be updated after image uploads.
@@ -109,9 +110,10 @@ async function uploadBlog() {
     } else {
       // Merge new content into the content array.
       await blogRef.update({
-        content: firebase.firestore.FieldValue.arrayUnion(...blogData),
+        uploadedImages: uploadedImages,
         updatedAt: firebase.firestore.FieldValue.serverTimestamp()
       });
+      
       console.log("Blog document updated with new content.");
     }
   } catch (err) {
@@ -159,10 +161,11 @@ async function uploadBlog() {
     });
   }
   
-  // Update the Firestore blog document with the storage download URLs.
+  // Update the Firestore blog document with the Storage download URLs.
   try {
     const doc = await blogRef.get();
     if (!doc.exists) {
+      // This should not happen because we created the document above.
       await blogRef.set({ uploadedImages });
     } else {
       await blogRef.update({

@@ -181,9 +181,36 @@
 }
  
 
-
+.upscaleImage
+{
+  position: absolute;
+  top: 88%;
+  height: 40px;
+  left: 22%;
+  transform: translate(-50%); /* Center the button */
+  outline: none;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  border-radius: 10px;
+  color: #fff;
+  font-weight: 300;
+  font-size: 1.2em; /* Set font size to 2em */
+  font-family: inherit;
+  z-index: 0;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
+  display: block;
+  width: 120px;
+}
 .downloadBox 
   {
+    position: absolute;
+    left: 20%;
     font-family: "VT323", monospace;
     font-size: 2em;
   }
@@ -418,3 +445,45 @@
       filter: blur(0px);
       border: 2px solid #f09433;
     }   
+
+    .showImage .imageContainer .wrapper.hidden 
+    {
+      opacity: 0;
+      transition: 0.25s;
+    }
+    .showImage .imageContainer .wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      z-index: 100;
+      background: radial-gradient(circle, rgba(255, 0, 0, 0.5), rgba(0, 0, 255, 0.5));
+      background-size: 400% 400%;
+      mix-blend-mode: screen;
+      filter: brightness(1.5) contrast(1.2) blur(35px);
+      animation: webglEffect 5s infinite alternate;
+      perspective: 1000px;
+      opacity: 1;
+      transition: 0.25s;
+  }
+  
+  @keyframes webglEffect {
+      0% {
+          background-position: 0% 0%;
+          transform: rotateX(5deg) rotateY(5deg) scale(1.05);
+      }
+      50% {
+          background-position: 100% 100%;
+          transform: rotateX(-5deg) rotateY(-5deg) scale(1);
+      }
+      100% {
+          background-position: 0% 0%;
+          transform: rotateX(5deg) rotateY(5deg) scale(1.05);
+      }
+  }
+  
