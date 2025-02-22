@@ -42,6 +42,7 @@ body
   transform: translateY(-50%);
   z-index: 10;
   left: 95%;
+  transition: 0.5s;
   height: 40px;
   width: 40px;
   background-size: cover;
@@ -1503,7 +1504,7 @@ body {
 
 .acceptBtn {
   position: absolute;
-  top: 92%;
+  top: 65%;
   left: 35%;
   --clr-font-main: hsla(0 0% 20% / 100);
   --btn-bg-1: hsla(194 100% 69% / 1);
@@ -1550,7 +1551,7 @@ body {
 
 .rejectBtn {
   position: absolute;
-  top: 93%;
+  top: 65%;
   left: 55%;
   --clr-font-main: hsla(0 0% 20% / 100);
   --btn-bg-1: rgb(255, 182, 215);

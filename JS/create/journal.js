@@ -21,24 +21,52 @@ textareas.forEach(textarea => {
     textarea.addEventListener('input', autoResize);
 });
 
+document.querySelectorAll(".newSection").forEach(section => {
+  section.addEventListener("click", function addNewSection() {
+    const node = `
+      <div class="journalWrapper">
+        <textarea class="journalDescription" placeholder="Wooh! What a day, let's write it down"></textarea>
+        <div class="newSection">+ </div>
+        <div class="thinkingSection"></div>
+      </div>
+    `;
+    // Append the new node to the content container without overwriting existing content
+    document.getElementById("content").insertAdjacentHTML('beforeend', node);
 
-document.querySelectorAll("#newSection").forEach(section => {
-    section.addEventListener("click", function() {
-        const node = `<input type="text" class="journalInput" id="journalInput" placeholder="Journal Title Goes Here" autocomplete="off" spellcheck="off">
-            <textarea class="journalDescription" id="journalDescription" placeholder="Wooh! What a day, Let's write it down"></textarea>
-            <div class="newSection" id="newSection"> + Add Section </div>
-            <div class="thinkingSection" id="thinkingSection"></div>`;
-            
-        document.getElementById("content").innerHTML += node;
-
-        // Re-attach the autoResize event listener to the new textarea
-        document.querySelectorAll('.journalDescription').forEach(textarea => {
-            textarea.addEventListener('input', autoResize);
-        });
-
-        // Re-attach the click event listener to the new section
-        document.querySelectorAll("#newSection").forEach(newSection => {
-            newSection.addEventListener("click", arguments.callee);
-        });
+    // Re-attach the autoResize event listener to all journalDescription textareas
+    document.querySelectorAll('.journalDescription').forEach(textarea => {
+      textarea.addEventListener('input', autoResize);
     });
+
+    // Re-attach the click event listener to all newSection elements
+    document.querySelectorAll(".newSection").forEach(newSection => {
+      newSection.removeEventListener("click", addNewSection);
+      newSection.addEventListener("click", addNewSection);
+    });
+  });
+});
+
+
+
+document.getElementById("closeJournal").addEventListener("click", function() {
+    document.getElementById("jorunalSection").classList.add("hidden");
+});
+
+
+
+const typeOfImageTile = document.getElementById('typeOfImageTileJournal');
+const children = typeOfImageTile.getElementsByTagName('span');
+Array.from(children).forEach(child => {
+    child.addEventListener('click', () => {
+        imageVarType = child.className;
+        console.log(imageVarType);
+        Array.from(children).forEach(c => {
+            c.style.opacity = ".25";
+            c.style.border = "none";
+        });
+        child.style.opacity = "1";
+        child.style.border = "1px solid #f4bb00";
+      
+    });
+    
 });

@@ -198,11 +198,11 @@
 
     <div class="samplePrompt" id="samplePrompt">
 
-      <div class="controls">
-        <i class="fa-solid fa-shield" id="privateBtn"> <span> Private </span> </i>
-        <i class="fa-solid fa-lightbulb" id="pimpPrompt"> <span> Imagine </span> </i>
-        <i class="fa-solid fa-shuffle" id="promptIdea"> <span> Random </span> </i>
-        <i class="fa-solid fa-book" id="promptIdea"> <span> Journal </span> </i>
+          <div class="controls">
+            <i class="fa-solid fa-shield" id="privateBtn"> <span> Private  </span> </i>  
+            <i class="fa-solid fa-lightbulb" id="pimpPrompt"> <span> Imagine </span> </i> 
+            <i class="fa-solid fa-shuffle" id="promptIdea"> <span> Random </span> </i> 
+            <i class="fa-solid fa-book" id="journalMode"> <span>  Aurora </span> </i> 
 
       </div>
       <i class="fa-solid fa-dice-one" id="OneImage"></i>
@@ -255,7 +255,7 @@
 
       <div class="maskImageTile1 1 tile" id="maskImageTile1" data-id="">
         <span>
-          <!-- <ion-icon name="cube"></ion-icon>  -->
+          <ion-icon name="cube"></ion-icon> 
           <!-- <p id="statusImage1"> </p> -->
         </span>
         <div class="imageTile1">
@@ -280,7 +280,7 @@
 
       <div class="maskImageTile2 2 tile" id="maskImageTile2" data-id="">
         <span>
-          <!-- <ion-icon name="cube"></ion-icon>  -->
+          <ion-icon name="cube"></ion-icon> 
           <!-- <p id="statusImage2"> </p> -->
         </span>
         <div class="imageTile2">
@@ -303,7 +303,7 @@
 
       <div class="maskImageTile3 3 tile" id="maskImageTile3" data-id="">
         <span>
-          <!-- <ion-icon name="cube"></ion-icon>  -->
+          <ion-icon name="cube"></ion-icon> 
           <!-- <p id="statusImage3"> </p> -->
         </span>
         <div class="imageTile3">
@@ -326,7 +326,7 @@
 
       <div class="maskImageTile4 4 tile" id="maskImageTile4" data-id="">
         <span>
-          <!-- <ion-icon name="cube"></ion-icon>  -->
+          <ion-icon name="cube"></ion-icon> 
           <!-- <p id="statusImage4"> </p> -->
         </span>
         <div class="imageTile4">
@@ -444,58 +444,63 @@
       <div id="progressBarAccept"></div>
     </div>
 
-    <div class="jorunalSection">
+    <div class="journalSection" id="journalSection">
+      
       <i class="fa-solid fa-xmark" id="closeJournal"></i>
-      <i class="fa-solid fa-floppy-disk" id="saveJournal"> <span> Ctrl + S </span></i>
+      <i class="fa-solid fa-wand-sparkles" id="saveJournal"> <span> Ctrl + S </span> </i>
+      <i class="fa-solid fa-floppy-disk" id="uploadJournal"> <span> Ctrl + U </span> </i>
       <div class="instructionPannel">
-        <div class="typeOfImage" id="typeOfImageTile">
-          <span id="imageFantasy" class="Fantasy">
+        <div class="headingName">Themes</div>
+        <div class="typeOfImage" id="typeOfImageTileJournal">
+          <span id="imageFantasy" class="Fantasy journal">
             <p>Fantasy</p>
           </span>
-          <span id="imageHalloween" class="Halloween">
+          <span id="imageHalloween" class="Halloween journal">
             <p>Halloween</p>
           </span>
-          <span id="imageStructure" class="Structure">
+          <span id="imageStructure" class="Structure journal">
             <p>Structure</p>
           </span>
-          <span id="imageCrayon" class="Crayon">
+          <span id="imageCrayon" class="Crayon journal">
             <p>Crayon</p>
           </span>
-          <span id="imageSpace" class="Space">
+          <span id="imageSpace" class="Space journal">
             <p>Space</p>
           </span>
-          <span id="imageChromatic" class="Chromatic">
+          <span id="imageChromatic" class="Chromatic journal">
             <p>Chromatic</p>
           </span>
-          <span id="imageCyberpunk" class="Cyberpunk">
+          <span id="imageCyberpunk" class="Cyberpunk journal">
             <p>Cyberpunk</p>
           </span>
-          <span id="imageAnime" class="Anime">
+          <span id="imageAnime" class="Anime journal">
             <p>Anime</p>
           </span>
-          <span id="imageLandscape" class="Landscape">
+          <span id="imageLandscape" class="Landscape journal">
             <p>Landscape</p>
           </span>
-          <span id="imageSamurai" class="Samurai">
+          <span id="imageSamurai" class="Samurai journal">
             <p>Samurai</p>
           </span>
-          <span id="imageWpap" class="Wpap">
+          <span id="imageWpap" class="Wpap journal">
             <p>Wpap</p>
           </span>
-          <span id="imageVintage" class="Vintage">
+          <span id="imageVintage" class="Vintage journal">
             <p>Vintage</p>
           </span>
-          <span id="imagePixel" class="Pixel">
+          <span id="imagePixel" class="Pixel journal">
             <p>Pixel</p>
           </span>
-          <span id="imageNormal" class="Normal">
+          <span id="imageNormal" class="Normal   active">
             <p>Normal</p>
           </span>
-          <span id="imageSynthwave" class="Synthwave">
+          <span id="imageSynthwave" class="Synthwave journal">
             <p>Synthwave</p>
           </span>
         </div>
+
         <div class="inputInstruction">
+          
           <div class="name"><i class="fa-solid fa-tv"></i> Namespace</div>
           <textarea class="canvasInstruction" placeholder="Wite Your Image Instructions Here"></textarea>
           <i class="bi bi-arrow-up-circle" id="upload"></i>
@@ -503,12 +508,19 @@
       </div>
 
       <div class="content" id="content">
-        <input type="text" class="journalInput" id="journalInput" placeholder="Journal Title Goes Here"
+        <div class="journalWrapper hidden" id="journalWrapper">
+          <input type="text" class="journalInput" id="journalInput" placeholder="Journal Title Goes Here"
           autocomplete="off" spellcheck="off">
-        <textarea class="journalDescription" id="journalDescription"
-          placeholder="Wooh! What a day, Let's write it down"></textarea>
-        <div class="newSection" id="newSection"> + Add Section </div>
-        <div class="thinkingSection" id="thinkingSection"></div>
+          <textarea class="journalDescription"
+          placeholder="Wooh! What a day, Let's write it down" style="height: 52px; overflow-y: hidden;"> This is a journal on the thinking of a hacker!</textarea>
+          <div class="newSection"> +  </div>
+          <div class="thinkingSection"> </div>
+          <div class="imageSections">
+            <div class="imageSection" style="background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2ETLUZ3jAJWBp7O7TVnzUdiTuYG55gGEmww&s);"></div>
+            <div class="imageSection" style="background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2ETLUZ3jAJWBp7O7TVnzUdiTuYG55gGEmww&s);"></div>
+          </div>
+        </div>
+        
 
 
       </div>
@@ -530,12 +542,14 @@
   <script src="../../JS/particles.min.js"></script>
   <!-- <script src="../../JS/PatchContextMenu.js"></script> -->
 
-  <script type="module" src="/JS/create/AIArtGeneratorGeneric.js"></script>
-  <script type="module" src="/JS/create/AIartGeneratorGeneral.js" defer></script>
-  <script src="/JS/create/isoImagetypeParticle.js"></script>
-  <script src="/JS/create/AIImageEnhancementEffect.js"> </script>
-  <script src="/JS/create/journal.js"> </script>
-  <script src="/JS/create/navBar.js"></script>
+        <script type="module" src="/JS/create/AIArtGeneratorGeneric.js"></script>
+        <script type="module" src="/JS/create/AIartGeneratorGeneral.js" defer></script>
+        <script src="/JS/create/isoImagetypeParticle.js"></script>
+        <script src="/JS/create/AIImageEnhancementEffect.js"> </script> 
+        <script src="/JS/create/journal.js"> </script> 
+        <script src="/JS/create/journalThought.js"> </script>
+        <script src="/JS/create/journalUpload.js" defer> </script>
+        <script src="/JS/create/navBar.js"></script>
 
 
 
