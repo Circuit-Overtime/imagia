@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const wrapper = document.getElementById("wrapper");
 
   document.getElementById("loginButton").addEventListener("click", function() {
-    redirectTo("src/auth");
+    redirectTo("auth");
   });
   document.getElementById("navBarDocs").addEventListener("click", function() {
     redirectTo("blogs/elixpo_art");
@@ -181,7 +181,21 @@ function scaleContainer() {
 
 
 
-
+document.getElementById("userLogo").addEventListener("click", function() {
+  if(document.getElementById("loginNavBar").classList.contains("hidden"))
+  {
+    document.getElementById("loginNavBar").classList.remove("hidden");
+    document.getElementById("userLogo").style.left = "5%";
+    document.getElementById("userLogo").style.zIndex = "100";
+  }
+  else 
+  {
+    document.getElementById("loginNavBar").classList.add("hidden");
+    document.getElementById("userLogo").style.left = "95%";
+    document.getElementById("userLogo").style.zIndex = "10";
+  }
+    
+});
 
 window.addEventListener('resize', scaleContainer);
 window.addEventListener('load', scaleContainer);

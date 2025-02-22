@@ -85,7 +85,7 @@ window.onload = function() {
     document.getElementById("promptTextInput").focus();
     setInterval(() => {
         if (localStorage.getItem("ElixpoAIUser") == null) {
-            redirectTo("src/auth/?notify=true"); //root hompage redirect
+            redirectTo("auth/?notify=true"); //root hompage redirect
         } else {
             document.querySelector(".patternContainer").classList.add("hidden");
             document.getElementById("accountMode").innerText = `Hi, ${localStorage.getItem("ElixpoAIUser").slice(0,1).toUpperCase() + localStorage.getItem("ElixpoAIUser").slice(1,20).slice(0,20)+"..."}`;
@@ -378,8 +378,10 @@ function handleStaticMode(numberOfImages) {
         }
     }
     document.getElementById("samplePrompt").classList.remove("generating");
+    document.getElementById("samplePrompt").style.height = "120px";
     if (document.getElementById("samplePrompt").classList.contains("generated")) {
         document.getElementById("samplePrompt").classList.remove("generated");
+        document.getElementById("samplePrompt").style.height = "100px";
     }
     document.getElementById("imageTiles").classList.add("hidden");
     setTimeout(() => {
@@ -625,9 +627,10 @@ function handleStaticModeExclusive(numberOfImages) {
         }
     }
     document.getElementById("samplePrompt").classList.remove("generating");
-
+    document.getElementById("samplePrompt").style.height = "120px";
     if (document.getElementById("samplePrompt").classList.contains("generated")) {
         document.getElementById("samplePrompt").classList.remove("generated");
+        document.getElementById("samplePrompt").style.height = "100px";
     }
 
     document.getElementById("imageTiles").classList.add("hidden");
