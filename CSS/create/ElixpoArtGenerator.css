@@ -199,10 +199,6 @@ overflow-x: hidden;
 }
 
 
-
-
-
-
   .enhancingMessage
   {
     position: absolute;
@@ -210,9 +206,8 @@ overflow-x: hidden;
     height: 60px;
     width: 60%;
     left: 20%;
-    border-bottom-right-radius: 12px;
-    border-bottom-left-radius: 12px;
-    background: #ffffff83;
+    background: transparent;
+    border-left: 5px solid #333;
     backdrop-filter: blur(12px);
     display: flex;
     overflow-y: auto;
@@ -225,13 +220,13 @@ overflow-x: hidden;
   {
     position: absolute;
     top: 10%;
-    left: 10%;
-    width: 82%;
+    left: 2%;
+    width: 95%;
     height: 20%;
     background: #494a4a;
     background: linear-gradient(45deg, #494a4a, #6e6e6e, #494a4a);
       animation: metallicLoading 1.5s linear infinite;
-      opacity: 0;
+      opacity: 1;
       transition: .5s;
   }
 
@@ -239,14 +234,14 @@ overflow-x: hidden;
   {
     position: absolute;
     top: 40%;
-    left: 10%;
-    width: 82%;
+    left: 2%;
+    width: 95%;
     height: 20%;
     background: #494a4a;
     background: linear-gradient(45deg, #494a4a, #6e6e6e, #494a4a);
     background-size: 200% 200%;
       animation: metallicLoading 1.5s linear infinite;
-      opacity: 0;
+      opacity: 1;
       transition: .5s;
   }
 
@@ -254,14 +249,14 @@ overflow-x: hidden;
   {
     position: absolute;
     top: 75%;
-    left: 10%;
-    width: 82%;
+    left: 2%;
+    width: 95%;
     height: 20%;
     background: #494a4a;
     background: linear-gradient(45deg, #494a4a, #6e6e6e, #494a4a);
     background-size: 200% 200%;
       animation: metallicLoading 1.5s linear infinite;
-      opacity: 0;
+      opacity: 1;
       transition: .5s;
   }
 
@@ -295,14 +290,15 @@ overflow-x: hidden;
   .enhancingMessage > .enhancedPrompt {
     position: absolute;
     left: 50%;
-    top: 5%;
+    top: 20%;
+    margin-left: 12px;
     transform: translate(-50%, -50%);
     width: 100%;
     font-family: "Orbitron", sans-serif;
     flex-wrap: wrap;
-    color: #001520;
-    font-size: 1.5em;
-    text-align: center; /* Change from justify to center */
+    color: #a3adb2;
+    text-align: left;
+    font-size: 1em;
   }
   .enhancingMessage.hidden
   {
@@ -320,7 +316,7 @@ overflow-x: hidden;
   .enhancingMessage.noEnhancement .flaahingLoadingText2,
   .enhancingMessage.noEnhancement .flaahingLoadingText3
   {
-    display: none;
+    display: block;
   }
 
 

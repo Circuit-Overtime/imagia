@@ -136,7 +136,7 @@ if (!username) {
         const journalDiv = document.createElement("div");
         journalDiv.className = "journalName";
         // Set the title inside the journal div.
-        journalDiv.textContent = data.title || "Untitled Blog";
+        journalDiv.textContent = data.title.slice(0,12)+"..." || "Untitled Blog";
         
         // Set the data-id attribute to the document's ID.
         journalDiv.setAttribute("data-id", doc.id);
@@ -151,3 +151,5 @@ if (!username) {
       console.error("Error retrieving blogs:", error);
     });
 }
+
+

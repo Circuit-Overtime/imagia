@@ -26,7 +26,7 @@ document.querySelectorAll(".newSection").forEach(section => {
     const node = `
       <div class="journalWrapper">
         <textarea class="journalDescription" placeholder="Wooh! What a day, let's write it down"></textarea>
-        <div class="newSection">+ </div>
+        <div class="newSection" id="newSection"> + </div>
         <div class="thinkingSection"></div>
       </div>
     `;
@@ -54,6 +54,7 @@ document.getElementById("closeJournal").addEventListener("click", function() {
 
 document.getElementById("journalMode").addEventListener("click", function() {
     document.getElementById("journalSection").classList.remove("hidden");
+    document.getElementById("journalInput").focus();
 });
 
 

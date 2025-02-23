@@ -10,15 +10,15 @@ setInterval(() => {
 
 document.getElementById("visitCreateArt").addEventListener("click", function() {
     if(localStorage.getItem("ElixpoAIUser") != null || localStorage.getItem("ElixpoAIUser") != undefined) {
-        redirectTo("src/create");
+        redirectTo("create");
     }
     else if((localStorage.getItem("ElixpoAIUser") == undefined) || localStorage.getItem("ElixpoAIUser") == null) 
     {
-        redirectTo("src/auth");
+        redirectTo("auth");
     }
     else 
     {
-        redirectTo("src/auth"); 
+        redirectTo("auth"); 
     }
 });
   
@@ -29,7 +29,7 @@ document.getElementById("visitDocs").addEventListener("click", function() {
 
 document.getElementById("visitFeed").addEventListener("click", function() {
   
-    redirectTo("src/feed");
+    redirectTo("feed");
 });
 
 document.getElementById("integrationsIcon").addEventListener("click", () => {

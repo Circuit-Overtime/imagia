@@ -15,13 +15,62 @@ document.getElementById("journalMode").addEventListener("click", function() {
     blogId = `${username}_${timestamp}`;
     localStorage.setItem("ElixpoBlogID", blogId);
   }
-  // Open the blog section (assumes "jorunalSection" shows the blog)
+  // Open the blog section (assumes "journalSection" shows the blog)
   document.getElementById("journalSection").classList.remove("hidden");
 });
+
+// When the user clicks the addJournal button, create a new blogID,
+// clear the content DOM, insert a blank template, and add an event listener to newSection.
+document.getElementById("addJournal").addEventListener("click", function() {
+  document.getElementById("menuBar").classList.add("hidden");
+  const username = localStorage.getItem("ElixpoAIUser");
+  if (!username) {
+    console.error("Username not found in localStorage.");
+    return;
+  }
+  const timestamp = Date.now();
+  const blogId = `${username}_${timestamp}`;
+  localStorage.setItem("ElixpoBlogID", blogId);
+  
+  
+    document.getElementById("content").innerHTML = "";
+    // Insert the blank journal template.
+    document.getElementById("content").innerHTML = `
+      <div class="journalWrapper hidden" id="journalWrapper">
+        <input type="text" class="journalInput" id="journalInput" placeholder="Journal Title Goes Here"
+          autocomplete="off" spellcheck="off">
+        <textarea class="journalDescription"
+          placeholder="Wooh! What a day, Let's write it down" style="height: 52px; overflow-y: hidden;"></textarea>
+        <div class="newSection" id="newSection"> +  </div>
+        <div class="thinkingSection"> </div>
+      </div>
+    `;
+    // Add event listener to newSection to add a new journal section.
+    document.getElementById("newSection").addEventListener("click", function() {
+      const newSection = document.createElement("div");
+      newSection.classList.add("journalWrapper");
+      newSection.innerHTML = `
+        <input type="text" class="journalInput" placeholder="Journal Title Goes Here" autocomplete="off" spellcheck="off">
+        <textarea class="journalDescription" placeholder="Wooh! What a day, Let's write it down" style="height: 52px; overflow-y: hidden;"></textarea>
+        <div class="newSection"> +  </div>
+        <div class="thinkingSection"> </div>
+      `;
+      document.getElementById("content").appendChild(newSection);
+
+      // Attach the same event listener to the new newSection.
+      newSection.querySelector(".newSection").addEventListener("click", arguments.callee);
+    });
+  } 
+);
 
 // Function to upload/update blog content.
 // Triggered via Ctrl+U; always uses the blog ID stored in localStorage.
 async function uploadBlog() {
+  document.getElementById("uploadJournal").classList.add("shine");
+  setTimeout(() => {
+    document.getElementById("uploadJournal").classList.remove("shine");
+  }, 2000);
+  
   // Get username from localStorage
   const username = localStorage.getItem("ElixpoAIUser");
   if (!username) {
@@ -101,6 +150,9 @@ async function uploadBlog() {
   
   const blogRef = db.collection("blog").doc(blogId);
   
+  // Declare uploadedImages here so it's defined for all later usages.
+  let uploadedImages = [];
+  
   // Create or update the Firestore document.
   try {
     const doc = await blogRef.get();
@@ -123,8 +175,6 @@ async function uploadBlog() {
   
   // Upload images to Storage for each journal wrapper.
   // We store an array of objects (one per wrapper) to avoid nested arrays.
-  const uploadedImages = [];
-  
   for (let wrapperIndex = 0; wrapperIndex < wrappers.length; wrapperIndex++) {
     const wrapper = wrappers[wrapperIndex];
     const imageDivs = wrapper.querySelectorAll(".imageSection");
@@ -174,15 +224,20 @@ async function uploadBlog() {
       });
     }
     console.log("Blog document updated with image URLs.");
+    document.querySelector(".savepoll").style.opacity = 1;
+    setTimeout(() => {
+      document.querySelector(".savepoll").style.opacity = 0;
+    }, 2000);
   } catch (updateErr) {
     console.error("Error updating blog doc with image URLs:", updateErr);
   }
 }
 
-// Listen for Ctrl+U (or Cmd+U) keydown event to trigger uploadBlog().
+// Listen for Ctrl+U (or Cmd+s) keydown event to trigger uploadBlog().
 document.addEventListener("keydown", function(e) {
-  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "u") {
+  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "s") {
     e.preventDefault();
     uploadBlog();
   }
 });
+
