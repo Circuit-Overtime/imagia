@@ -5,7 +5,7 @@ Imagia is a revolutionary platform that turns your text into stunning, high-qual
 
 ## Key Features
 - **Text-to-Image Generation:**  
-  Simply type a description, and our advanced AI instantly creates beautiful images that perfectly capture your vision.
+  Simply type a prompt, and our advanced AI instantly creates beautiful images that perfectly capture your vision.
 
 - **Prompt Pimping:**  
   If your prompt isn’t detailed enough for optimal image generation, our system automatically refines and enhances it, ensuring you always get the best results.
