@@ -56,7 +56,7 @@ Imagia isn’t just another image generator—it’s a full-fledged creative eco
 
 2. **Visit the Image Upscaler**
 - Use the python pipeline of realesargan TO COMPETE THE 4x times upscaling of an image
-- Works on the principle of .pth bin extension to include weighjts and missing pixels every 5  steps to upscale the size of the image by 
+- Works on the principle of .pth bin extension to include weights and missing pixels every 5 steps to upscale the size of the image by 
 almost 10^3 exponentially in terms of size and resolution
 
 
