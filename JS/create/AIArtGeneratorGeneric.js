@@ -125,11 +125,11 @@ document.addEventListener("DOMContentLoaded", function () {
     redirectTo("auth");
   });
   document.getElementById("navBarDocs").addEventListener("click", function() {
-    redirectTo("blogs/elixpo_art");
+    redirectTo("blog");
   });
 
   document.getElementById("navBarGitHub").addEventListener("click", () => {
-    location.href = "https://github.com/Circuit-Overtime/elixpo_ai_chapter"
+    location.href = "https://github.com/Circuit-Overtime/imagia"
   })
 
 const uniqueRand = (min, max, prev) => {
