@@ -60,5 +60,8 @@ Imagia isn’t just another image generator—it’s a full-fledged creative eco
 almost 10^3 exponentially in terms of size and resolution
 
 
+3. **Visit the hugging face models**
+- [https://github.com/Circuit-Overtime/imagia.git](The Flux Diffusion Model)
+- [https://huggingface.co/Elixpo/promptPimp](the prompt pimping model)
 
 
