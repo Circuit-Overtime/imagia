@@ -9,7 +9,27 @@ color: #fff;
 font-size: 2em;
 cursor: pointer;
 }
+.savepoll
+{
+  position: absolute;
+  top: 5%;
+  left: 35%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #ffcc00, #ff9900);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1em;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 153, 0, 0.7);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+}
 
+.savepoll:hover {
+  box-shadow: 0 0 20px rgba(255, 153, 0, 1), 0 0 30px rgba(255, 153, 0, 0.9);
+}
 .headingName 
 {
     position: absolute;
@@ -54,7 +74,22 @@ cursor: pointer;
   border-radius: 10px;
   box-shadow: inset 0 0 40px #665d5d8c;
 }
+#uploadJournal.shine 
+{
+  box-shadow: 0 0 10px #ffcc00;
+}
+#saveJournal.shine 
+{
+  box-shadow: 0 0 10px #ffcc00;
+}
 
+#downloadJournal.shine 
+{
+  box-shadow: 0 0 10px #ffcc00;
+}
+
+
+ 
 #menu 
 {
   position: absolute;
@@ -90,21 +125,59 @@ cursor: pointer;
   pointer-events: none;
 }
 .menuBar .journalName {
-  position: relative;
   display: block;
   padding: 10px;
   width: 80%;
   font-size: 1.5em;
   font-weight: 700;
-  color: #fff;
+  color: #bcafaf;
   font-family: 'Raleway', sans-serif;
   cursor: pointer;
   margin: 10px auto; /* Center horizontally */
-  background: #333; /* Add background color */
+  background: #242323; /* Add background color */
   text-align: center; /* Center text */
   transition: margin 0.3s ease; /* Smooth transition for margin */
-  border-radius: 25px;
+  border-radius: 15px;
 }
+
+.menuBar .journalName:hover {
+  margin: 8px auto; /* Adjust margin on hover */
+  background: #474646; /* Change background color on hover */
+}
+
+.addJournal {
+  display: block;
+  padding: 10px;
+  width: 60%;
+  font-size: 1.5em;
+  font-weight: 700;
+  font-family: 'Raleway', sans-serif;
+  cursor: pointer;
+  margin: 10px auto;
+  text-align: center;
+  transition: margin 0.3s ease;
+  border-radius: 15px;
+  position: relative;
+  /* Gradient text effect */
+  background: linear-gradient(145deg, #06544d, #9B487D, #7fff00, #355604);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  /* Animation */
+  animation: gradientMove 3s linear infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+
 
 
 #downloadJournal {
@@ -238,8 +311,8 @@ cursor: pointer;
     position: relative;
     padding: 40px 20px; /* 40px top & bottom, 20px left & right */
     left: 30%;
-    top: 5%;
-    height: 85%;
+    top: 11%;
+    height: 70%;
     overflow-y: auto;
     margin-bottom: 20px;
 }
@@ -309,9 +382,9 @@ cursor: pointer;
     max-height: 20%; /* maximum height if desired */
     margin: 0 auto;
     display: flex;
-    color: #dbbfbf;
-    font-size: 1em;
-    font-family: 'Inconsolata', sans-serif;
+    color: #938989;
+    font-size: 1.2em;
+    font-family: 'raleway', sans-serif;
     padding: 10px;   /* add some padding if needed */
     box-sizing: border-box;
     border-left: 5px solid #707070 ;
@@ -330,8 +403,8 @@ cursor: pointer;
   justify-content: center;
   align-items: center;
   background: #474646;
-  color: #dbbfbf;
-  font-size: 1.5em;
+ 
+  font-size: 1.7em;
   font-family: 'Raleway', sans-serif;
   border: none;
   border-radius: 10px;

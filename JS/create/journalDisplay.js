@@ -31,7 +31,62 @@ function createSingleJournalWrapper(contentEntry, uploadedImagesEntry) {
   // Create the newSection div.
   const newSection = document.createElement("div");
   newSection.className = "newSection";
+  newSection.id = "newSection";
   newSection.textContent = " + ";
+  newSection.addEventListener("click", function() {
+    const node = `
+      <div class="journalWrapper">
+        <textarea class="journalDescription" placeholder="Wooh! What a day, let's write it down"></textarea>
+        <div class="newSection" id="newSection"> + </div>
+        <div class="thinkingSection"></div>
+      </div>
+    `;
+    // Append the new node to the content container without overwriting existing content
+    document.getElementById("content").insertAdjacentHTML("beforeend", node);
+
+    // Re-attach the autoResize event listener to all journalDescription textareas
+    document.querySelectorAll(".journalDescription").forEach(textarea => {
+      textarea.addEventListener("input", autoResize);
+    });
+
+    // Re-attach the click event listener to all newSection elements
+    document.querySelectorAll(".newSection").forEach(newSection => {
+      newSection.removeEventListener("click", function() {
+        const node = `
+          <div class="journalWrapper">
+            <textarea class="journalDescription" placeholder="Wooh! What a day, let's write it down"></textarea>
+            <div class="newSection" id="newSection"> + </div>
+            <div class="thinkingSection"></div>
+          </div>
+        `;
+        document.getElementById("content").insertAdjacentHTML("beforeend", node);
+        document.querySelectorAll(".journalDescription").forEach(textarea => {
+          textarea.addEventListener("input", autoResize);
+        });
+        document.querySelectorAll(".newSection").forEach(newSection => {
+          newSection.removeEventListener("click", addNewSection);
+          newSection.addEventListener("click", addNewSection);
+        });
+      });
+      newSection.addEventListener("click", function() {
+        const node = `
+          <div class="journalWrapper">
+            <textarea class="journalDescription" placeholder="Wooh! What a day, let's write it down"></textarea>
+            <div class="newSection" id="newSection"> + </div>
+            <div class="thinkingSection"></div>
+          </div>
+        `;
+        document.getElementById("content").insertAdjacentHTML("beforeend", node);
+        document.querySelectorAll(".journalDescription").forEach(textarea => {
+          textarea.addEventListener("input", autoResize);
+        });
+        document.querySelectorAll(".newSection").forEach(newSection => {
+          newSection.removeEventListener("click", addNewSection);
+          newSection.addEventListener("click", addNewSection);
+        });
+      });
+    });
+  });
 
   // Create the thinkingSection div.
   const thinkingSection = document.createElement("div");
@@ -116,6 +171,8 @@ function attachJournalClickListeners() {
         // Clear the content container before rendering.
         document.getElementById("content").innerHTML = "";
         displayBlog(docData);
+        localStorage.setItem("ElixpoBlogID", docId);
+        document.getElementById("menubar").classList.add("hidden"); 
       } catch (error) {
         console.error("Error fetching blog document:", error);
       }

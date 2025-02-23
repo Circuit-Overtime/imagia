@@ -211,7 +211,7 @@
       <i class="fa-solid fa-dice-five" id="OneImageOpacitySecond"></i>
 
       <textarea name="" id="promptTextInput" class="promptTextInput" spellcheck="false" autocomplete="none"
-        placeholder="Type in Your Prompt for Elixpo to Imagine"> </textarea>
+        placeholder="Type in Your Prompt for Elixpo to Imagine"></textarea>
       <div class="searchButtonText" id="searchButtonText">
         <button class="searchBtn">
           <span class="spark"></span>
@@ -443,15 +443,17 @@
       <div id="progressBarAccept"></div>
     </div>
 
-    <div class="journalSection hidden" id="journalSection">
+    <div class="journalSection" id="journalSection">
       <div class="menuBar hidden" id="menubar">
-        
+        <div class="addJournal" id="addJournal"> <i class="fa-solid fa-circle-plus"></i> 
+        <span> Aurora </span></div>
       </div>
       <i class="fa-solid fa-xmark" id="closeJournal"></i>
+      <div class="savepoll">Draft Saved</div>
       <i class="fa-solid fa-bars" id="menu"></i>
-      <i class="fa-solid fa-file-arrow-down" id="downloadJournal"> <span> Ctrl + J </span> </i>
-      <i class="fa-solid fa-wand-sparkles" id="saveJournal"> <span> Ctrl + S </span> </i>
-      <i class="fa-solid fa-floppy-disk" id="uploadJournal"> <span> Ctrl + U </span> </i>
+      <i class="fa-solid fa-file-arrow-down" id="downloadJournal"> <span> Ctrl + P </span> </i>
+      <i class="fa-solid fa-wand-sparkles"  id="saveJournal"> <span> Ctrl + G </span> </i>
+      <i class="fa-solid fa-floppy-disk"  id="uploadJournal"> <span> Ctrl + S </span> </i>
       
       <div class="instructionPannel">
         <div class="headingName">Themes</div>
@@ -517,7 +519,7 @@
           autocomplete="off" spellcheck="off">
           <textarea class="journalDescription"
           placeholder="Wooh! What a day, Let's write it down" style="height: 52px; overflow-y: hidden;"></textarea>
-          <div class="newSection"> +  </div>
+          <div class="newSection" id="newSection"> +  </div>
           <div class="thinkingSection"> </div>
         </div>
         

@@ -269,7 +269,7 @@ button svg {
 }
 
 .samplePrompt.generated {
-    top: 83%;
+    top: 93%;
     pointer-events: none;
     color: #f6a6fe;
     height: 110px;
@@ -338,6 +338,8 @@ button svg {
 #journalMode {
     position: relative;
     margin: 0; /* Removes unnecessary margins */
+    max-height: 60px;
+    max-width: 120px;
     color: #bee4d7;
     cursor: pointer;
     font-size: 0.8em;
@@ -353,6 +355,7 @@ button svg {
     white-space: nowrap; /* Prevents line breaks */
     transition: all 0.3s ease;
 }
+
 #privateBtn.selected,
 #pimpPrompt.selected,
 #promptIdea.selected,
@@ -363,17 +366,40 @@ button svg {
     color: #028a5a;
     border: 2px solid #028a5a;
 }
-
+#journalMode 
+{
+    background: linear-gradient(145deg, #06544d, #9B487D, #7fff00, #355604);
+    background-size: 400% 400%;
+    animation: aurora 15s ease infinite;
+}
+@keyframes aurora {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
 #privateBtn:hover,
 #pimpPrompt:hover,
-#promptIdea:hover,
-#journalMode:hover
+#promptIdea:hover
 {
     background: #3e3c3c;
     color: #bee4d7;
     border: 2px solid #bee4d7;
 }
-
+#journalMode:hover
+{
+    background: transparent;
+    color: #bee4d7;
+}
+#journalMode:hover span
+{
+    color: #bee4d7;
+}
 #privateBtn span,
 #pimpPrompt span,
 #promptIdea span,
@@ -384,7 +410,11 @@ button svg {
     font-family: 'Calibri', sans-serif;
     color: #bee4d7;
 }
-
+#journalMode,
+#journalMode span {
+    color: #1f1d1d;
+    font-weight: 700;
+}
 
 
 .searchButton {

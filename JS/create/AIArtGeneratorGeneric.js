@@ -197,5 +197,6 @@ document.getElementById("userLogo").addEventListener("click", function() {
     
 });
 
+
 window.addEventListener('resize', scaleContainer);
 window.addEventListener('load', scaleContainer);

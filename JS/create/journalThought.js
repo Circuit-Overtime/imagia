@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
                 displayChainOfThought(thinkingSection, "Hmm, I see");
-                var inst = "act like as if you are a therapist and a wife  ,  listening to the user, write your reaction , like as if you are a great friend, in detail edn by asking an interesting question to the user. "
+                var inst = "Act like as if you are a therapist whose job is to listen and react like a good friend and a listener, do ask questions to keep the user engaged, give advices when needed, write in 70 words. "
                 const url = `https://txtelixpo.vercel.app/t/ ${inst} ${encodeURIComponent(text)} in 40 words`;
                 try {
                     const response = await fetch(url, { method: "GET" });
@@ -68,11 +68,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // -------------------------
-    // Image generation on Ctrl+S with animation
+    // Image generation on Ctrl+g with animation
     // -------------------------
     document.addEventListener("keydown", async (e) => {
-        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "s") {
+        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "g") {
             e.preventDefault();
+            document.getElementById("saveJournal").classList.add("shine");
+            setTimeout(() => {
+                document.getElementById("saveJournal").classList.remove("shine");
+            }, 2000);
             console.log(imageGenerationInProgress);
             if (imageGenerationInProgress) return;
 
