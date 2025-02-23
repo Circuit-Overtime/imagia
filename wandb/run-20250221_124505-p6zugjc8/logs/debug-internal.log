@@ -1,0 +1,11 @@
+{"time":"2025-02-21T12:45:05.774132+05:30","level":"INFO","msg":"stream: starting","core version":"0.19.7","symlink path":"E:\\iem_hackathon\\wandb\\run-20250221_124505-p6zugjc8\\logs\\debug-core.log"}
+{"time":"2025-02-21T12:45:05.8957566+05:30","level":"INFO","msg":"created new stream","id":"p6zugjc8"}
+{"time":"2025-02-21T12:45:05.8963208+05:30","level":"INFO","msg":"stream: started","id":"p6zugjc8"}
+{"time":"2025-02-21T12:45:05.8963208+05:30","level":"INFO","msg":"writer: Do: started","stream_id":"p6zugjc8"}
+{"time":"2025-02-21T12:45:05.8964592+05:30","level":"INFO","msg":"sender: started","stream_id":"p6zugjc8"}
+{"time":"2025-02-21T12:45:05.8964592+05:30","level":"INFO","msg":"handler: started","stream_id":"p6zugjc8"}
+{"time":"2025-02-21T12:45:06.5079995+05:30","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-02-21T12:45:26.5227898+05:30","level":"ERROR","msg":"monitor: cpu: error sampling metrics: couldn't find pid: 24864"}
+{"time":"2025-02-21T12:45:36.5254566+05:30","level":"ERROR","msg":"monitor: cpu: error sampling metrics: couldn't find pid: 24864"}
+{"time":"2025-02-21T12:45:46.5213837+05:30","level":"ERROR","msg":"monitor: cpu: error sampling metrics: couldn't find pid: 24864"}
+{"time":"2025-02-21T12:45:56.5229505+05:30","level":"ERROR","msg":"monitor: cpu: error sampling metrics: couldn't find pid: 24864"}
