@@ -70,8 +70,8 @@
 }
   
   .footerElement {
-    position: absolute;
-    top: 90%;
+    position: relative;
+    top: 30%;
     height: 10%;
     width: 100%;
     left: 0;
