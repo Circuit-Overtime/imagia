@@ -5,7 +5,7 @@ Imagia is a revolutionary platform that turns your text into stunning, high-qual
 
 ## Key Features
 - **Text-to-Image Generation:**  
-  Simply type a description, and our advanced AI instantly creates beautiful images that perfectly capture your vision.
+  Simply type a prompt, and our advanced AI instantly creates beautiful images that perfectly capture your vision.
 
 - **Prompt Pimping:**  
   If your prompt isn’t detailed enough for optimal image generation, our system automatically refines and enhances it, ensuring you always get the best results.
@@ -53,3 +53,12 @@ Imagia isn’t just another image generator—it’s a full-fledged creative eco
    ```bash
    git clone https://github.com/yourusername/imagia.git
    cd imagia
+
+2. **Visit the Image Upscaler**
+- Use the python pipeline of realesargan TO COMPETE THE 4x times upscaling of an image
+- Works on the principle of .pth bin extension to include weighjts and missing pixels every 5  steps to upscale the size of the image by 
+almost 10^3 exponentially in terms of size and resolution
+
+
+
+
