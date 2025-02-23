@@ -68,10 +68,11 @@ body {
 }
 
 .mainName .mainName_name {
+    top: 5%;
     position: relative;
-    left: 5%;
+    left: 10%;
     font-family: "Salsa", sans-serif;
-    font-size: 11em;
+    font-size: 12em;
     font-weight: 700;
     background: linear-gradient(135deg, #f4c801db 0%, #504900 100%);
     -webkit-background-clip: text;
