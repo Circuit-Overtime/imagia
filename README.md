@@ -63,5 +63,7 @@ almost 10^3 exponentially in terms of size and resolution
 3. **Visit the hugging face models**
 - [https://github.com/Circuit-Overtime/imagia.git](The Flux Diffusion Model)
 - [https://huggingface.co/Elixpo/promptPimp](the prompt pimping model)
+- The Finetunning of T5-Base has been provided as .ipynb file ij our github repo.
+- The Fineyunning for PromptPimper is availble at https://huggingface.co/datasets/treysarkar/PromptPimpSynth
 
 
