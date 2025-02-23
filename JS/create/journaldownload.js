@@ -15,8 +15,18 @@ document.getElementById('downloadJournal').addEventListener('click', function ()
     // Journal Description
     const journalDescription = document.querySelector('.journalDescription');
     if (journalDescription && journalDescription.offsetParent !== null) {
-        pdf.setFontSize(12);
         const descriptionText = journalDescription.value || journalDescription.placeholder;
+        if (!descriptionText.trim()) {
+            document.getElementById("NotifTxt").innerText = "Not enough content";
+            document.getElementById("savedMsg").classList.add("display");
+            setTimeout(() => {
+                document.getElementById("savedMsg").classList.remove("display");
+            }, 1500);
+            document.getElementById("NotifTxt").innerText = "Greetings!";
+            return;
+        }
+
+        pdf.setFontSize(12);
         // Split the description into lines that fit the PDF's width
         const maxWidth = pdf.internal.pageSize.getWidth() - 20; // PDF width minus margins
         const lines = pdf.splitTextToSize(descriptionText, maxWidth);

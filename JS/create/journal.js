@@ -49,7 +49,11 @@ document.querySelectorAll(".newSection").forEach(section => {
 
 
 document.getElementById("closeJournal").addEventListener("click", function() {
-    document.getElementById("jorunalSection").classList.add("hidden");
+    document.getElementById("journalSection").classList.add("hidden");
+});
+
+document.getElementById("journalMode").addEventListener("click", function() {
+    document.getElementById("journalSection").classList.remove("hidden");
 });
 
 
@@ -69,4 +73,8 @@ Array.from(children).forEach(child => {
       
     });
     
+});
+
+document.getElementById("menu").addEventListener("click", function() {
+    document.getElementById("menubar").classList.toggle("hidden");
 });

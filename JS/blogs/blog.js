@@ -202,9 +202,6 @@ function fetchComments() {
 }
 
 document.getElementById("elixpoArtRedirect").addEventListener("click", function () {
-    redirectTo("src/create");
+    redirectTo("create");
 });
 
-document.getElementById("integrations").addEventListener("click", function () {
-    redirectTo("integrations");
-});

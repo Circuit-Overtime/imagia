@@ -11,6 +11,7 @@
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
   <!-- <link rel="stylesheet" type="text/css" href="../../CSS/pageloadingPattern.css"> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 
 
@@ -210,7 +211,7 @@
       <i class="fa-solid fa-dice-five" id="OneImageOpacitySecond"></i>
 
       <textarea name="" id="promptTextInput" class="promptTextInput" spellcheck="false" autocomplete="none"
-        placeholder="Type in Your Prompt for Elixpo to Imagine"></textarea>
+        placeholder="Type in Your Prompt for Elixpo to Imagine"> </textarea>
       <div class="searchButtonText" id="searchButtonText">
         <button class="searchBtn">
           <span class="spark"></span>
@@ -236,7 +237,7 @@
 
 
 
-    <div class="enhancingMessage hidden" id="enhancingMessage">
+    <div class="enhancingMessage" id="enhancingMessage">
       <div class="flashingDot"></div>
       <div class="flaahingLoadingText1" id="textLoadingAnim1"></div>
       <div class="flaahingLoadingText2" id="textLoadingAnim2"></div>
@@ -251,8 +252,6 @@
     <div class="enhancementAI hidden" id="enhancementAI"></div>
 
     <div class="imageTiles hidden" id="imageTiles">
-
-
       <div class="maskImageTile1 1 tile" id="maskImageTile1" data-id="">
         <span>
           <ion-icon name="cube"></ion-icon> 
@@ -386,6 +385,7 @@
     <div class="showImage hidden" id="showImage">
       <ion-icon name="close-circle-outline" class="backButton" id="backButton"></ion-icon>
       <div class="imageContainer">
+        <div class="wrapper hidden"></div>
         <img src="" class="imgDisp" id="imgDisp">
       </div>
       <div class="PromptDisplay" id="PromptDisplay" spellcheck="false" autocapitalize="false">
@@ -394,7 +394,9 @@
       <div class="copyZone" id="copyPrompt"><ion-icon name="copy-outline"></ion-icon></div>
 
 
-
+      <button class="upscaleImage" id="upscaleImage">
+        Upscale
+      </button>
       <button class="downloadBox" id="downloadBox">
         Download
       </button>
@@ -409,9 +411,6 @@
       </button>
 
     </div>
-
-
-
 
     <h1 class="aiEnhancementDesc" id="aiEnhancementDesc">
       <span class="magic">
@@ -444,12 +443,16 @@
       <div id="progressBarAccept"></div>
     </div>
 
-    <div class="journalSection" id="journalSection">
-      
+    <div class="journalSection hidden" id="journalSection">
+      <div class="menuBar hidden" id="menubar">
+        
+      </div>
       <i class="fa-solid fa-xmark" id="closeJournal"></i>
+      <i class="fa-solid fa-bars" id="menu"></i>
       <i class="fa-solid fa-file-arrow-down" id="downloadJournal"> <span> Ctrl + J </span> </i>
       <i class="fa-solid fa-wand-sparkles" id="saveJournal"> <span> Ctrl + S </span> </i>
       <i class="fa-solid fa-floppy-disk" id="uploadJournal"> <span> Ctrl + U </span> </i>
+      
       <div class="instructionPannel">
         <div class="headingName">Themes</div>
         <div class="typeOfImage" id="typeOfImageTileJournal">
@@ -513,13 +516,9 @@
           <input type="text" class="journalInput" id="journalInput" placeholder="Journal Title Goes Here"
           autocomplete="off" spellcheck="off">
           <textarea class="journalDescription"
-          placeholder="Wooh! What a day, Let's write it down" style="height: 52px; overflow-y: hidden;"> This is a journal on the thinking of a hacker!</textarea>
+          placeholder="Wooh! What a day, Let's write it down" style="height: 52px; overflow-y: hidden;"></textarea>
           <div class="newSection"> +  </div>
           <div class="thinkingSection"> </div>
-          <div class="imageSections">
-            <div class="imageSection" style="background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2ETLUZ3jAJWBp7O7TVnzUdiTuYG55gGEmww&s);"></div>
-            <div class="imageSection" style="background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2ETLUZ3jAJWBp7O7TVnzUdiTuYG55gGEmww&s);"></div>
-          </div>
         </div>
         
 
@@ -541,6 +540,7 @@
   <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
   <script src="../../JS/linkRedirect.js" defer></script>
   <script src="../../JS/particles.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
   <!-- <script src="../../JS/PatchContextMenu.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 
@@ -548,10 +548,13 @@
         <script type="module" src="/JS/create/AIartGeneratorGeneral.js" defer></script>
         <script src="/JS/create/isoImagetypeParticle.js"></script>
         <script src="/JS/create/AIImageEnhancementEffect.js"> </script> 
+        <script src="/JS/create/upscaleLoader.js"> </script>
         <script src="/JS/create/journal.js"> </script> 
+        <script src="/JS/create/journaldownload.js"> </script> 
         <script src="/JS/create/journalThought.js"> </script>
         <script src="/JS/create/journalUpload.js" defer> </script>
-        <script src="/JS/create/journaldownload.js"> </script> 
+        <script src="/JS/create/journalRetrieveal.js" defer> </script>
+        <script src="/JS/create/journalDisplay.js" defer> </script>
         <script src="/JS/create/navBar.js"></script>
 
 
